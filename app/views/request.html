@@ -7,9 +7,18 @@
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <script type="text/javascript" src="@{'/public/javascripts/callApi.js'}"></script>
 </head>
-<body  ng-controller="RequestController">
+<body>
 	<div>
-		<button ng-click="loginAndFetchData()">Ping</button>
+		<a href='@{Request.ping()}'>Ping</a>
+	</div>
+	<div>
+		<a href="@{Request.subList()}">Subscribers</a>
+	</div>
+	<div>
+		<a href="@{Request.singleSubData()}">Subscriber data</a>
+	</div>
+	<div>
+		<a href="@{Request.multiSubData()}">Many subscribers data</a>
 	</div>
 </body>
 </html>
