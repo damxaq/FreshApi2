@@ -14,8 +14,14 @@ import play.mvc.Scope.Session;
 public class Security extends Secure.Security {
 
 	static boolean authenticate(String username, String password){
-		User connect = User.connect(username, password);
-		return  connect!= null;
+		
+		Boolean connect = User.connect(username, password);
+		if (connect==true) {
+			session.put("name", username);
+			Security.connected();
+			Security.onAuthenticated();
+			}
+		return connect==true;
 	}
 
 	static void onDisconnected() {
@@ -24,7 +30,7 @@ public class Security extends Secure.Security {
 	}
 	
 	static void onAuthenticated() {
-	    Admin.index();
+	    Application.index();
 	}
 	
 }

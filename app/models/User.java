@@ -1,10 +1,10 @@
 package models;
 
-import javax.persistence.Entity;
 
 import play.db.jpa.Model;
+import utils.FileGet;
 
-@Entity
+
 public class User extends Model{
 	
 	public String login;
@@ -15,8 +15,9 @@ public class User extends Model{
 		this.password = password;
 	}
 	
-    public static User connect(String login, String password){
-    	return find("byLoginAndPassword", login, password).first();
+    public static boolean connect(String login, String password){
+    	System.out.println("proba polaczenia: " + login + password);
+    	return (FileGet.readProperty(login).equals(password));
     }
 
 	

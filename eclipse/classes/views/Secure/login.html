@@ -6,12 +6,11 @@
 <title>Insert title here</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 	<script type="text/javascript" src="@{'/public/javascripts/login.js'}"></script>
-	<script type="text/javascript" src="@{'/public/javascripts/callApi.js'}"></script>
 </head>
 <body>
 <div id="login">
 	
-	<form method="post" action="@{Application.index}" ng-controller="LoginController">
+	<form method="post" action="@{Admin.index}" ng-controller="LoginController">
 		<p id="username-field">
 			<label for="username"></label>
 			<input type="text" name="name" id="name" 

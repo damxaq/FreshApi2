@@ -8,9 +8,20 @@ import hash.HashGenerator;
 import play.mvc.Controller;
 import utils.ByteReader;
 import utils.FileGet;
-public class SingleSubscriberData{
+public class MultipleSubscriberDataAction{
 	
-	public static void readSinlgeSubscriberData() throws IOException {
+	public static String[] EmailList={
+			"email1@info-baza.ayz.pl", "email2@info-baza.ayz.pl", "email3@info-baza.ayz.pl",
+			"email4@info-baza.ayz.pl", "email5@info-baza.ayz.pl", "email6@info-baza.ayz.pl",
+			"email7@info-baza.ayz.pl", "email8@info-baza.ayz.pl", "email9@info-baza.ayz.pl",
+			};
+	
+	public static void readMultipleSubscriberData() throws IOException{
+		for(String email:EmailList)
+			readSinlgeSubscriberData(email);
+	}
+	
+	private static void readSinlgeSubscriberData(String email) throws IOException {
 
 		String GET_data = "/rest/subscriber/get/";
 		String Address = "https://api.freshmail.com";
@@ -20,7 +31,8 @@ public class SingleSubscriberData{
 		String ApiList = FileGet.getApiList();
 		
 		GET_data+=ApiList;
-		GET_data+="/email1@info-baza.ayz.pl";
+		GET_data+="/";
+		GET_data+=email;
 		
 		Address+=GET_data;
 		GET_data=ApiKey+GET_data;
